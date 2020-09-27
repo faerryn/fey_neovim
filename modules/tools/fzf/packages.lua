@@ -1,1 +1,1 @@
-minpac.add'junegunn/fzf'
+minpac.add('junegunn/fzf', {type = 'opt'})
