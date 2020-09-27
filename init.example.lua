@@ -17,7 +17,7 @@ return {
 		'fzf',
 		'git',
 		'tags',
-		'undotree',
+		'undo-tree',
 	},
 	ui = {
 		'colorscheme',
