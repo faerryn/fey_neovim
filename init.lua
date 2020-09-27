@@ -19,46 +19,54 @@ end
 vim.cmd'augroup fey_reload'
 vim.cmd'augroup END'
 
+function load_file_lenient(file)
+	if vim.fn.filereadable(file) == 0 then return end
+	local status, result = pcall(dofile, file)
+	if not status then
+		print(result)
+		return nil
+	end
+	return result
+end
+
 if vim.g.batch ~= nil then
-	function fey_load_module(module_d, module_name)
-		local packages_f = module_d .. '/packages.lua'
-		if vim.fn.filereadable(packages_f) ~= 0 then dofile(packages_f) end
+	function fey_load_module(module_d, name)
+		load_file_lenient(module_d .. '/packages.lua')
 	end
 else
-	function fey_load_module(module_d, module_name)
+	function fey_load_module(module_d, name)
 		local config_f = module_d .. '/config.lua'
-		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. ' lua fey_load_module(' .. module_d .. ', ' .. module_name .. ')')
+		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', " .. name .. ')')
 
-		local augroup = 'fey_' .. module_name:gsub('/', '_')
+		local augroup = 'fey_' .. name
 		vim.cmd('augroup ' .. augroup)
 		vim.cmd('autocmd! ' .. augroup)
 		vim.cmd('augroup END')
 
-		if vim.fn.filereadable(config_f) ~= 0 then dofile(config_f) end
+		load_file_lenient(config_f)
 	end
 end
 
-local fey_core_d = vim.fn.expand'<sfile>:p:h'
+local core_fey_d = vim.fn.expand'<sfile>:p:h'
+fey_load_module(core_fey_d, 'core')
 
 local config_d = vim.fn.expand'$XDG_CONFIG_HOME'
-if config_d == '' then config_d = vim.fn.expand'$HOME/.config' end
-local fey_d = config_d .. '/fey'
+if config_d == '' then
+	config_d = vim.fn.expand'$HOME/.config'
+end
+local user_fey_d = config_d .. '/fey'
+fey_load_module(user_fey_d, 'user')
 
-fey_load_module(fey_core_d, 'core')
-fey_load_module(fey_d, 'user')
-
-local init_f = fey_d .. '/init.lua'
-local modules_d = fey_core_d .. '/modules'
-local user_modules_d = fey_d .. '/modules'
+local init_f = user_fey_d .. '/init.lua'
+local core_module_d = core_fey_d .. '/modules'
+local user_modules_d = user_fey_d .. '/modules'
 
 for category, modules in pairs(dofile(init_f)) do
 	for _, module in ipairs(modules) do
-		local category_module_d = category .. '/' .. module
-		local user_category_module_d = user_modules_d .. '/' .. category_module_d
-		if vim.fn.isdirectory(user_category_module_d) ~= 0 then
-			fey_load_module(user_category_module_d, category_module_d)
-		else
-			fey_load_module(modules_d .. '/' .. category_module_d, category_module_d)
+		local module_d = user_modules_d .. '/' .. category .. '/' .. module
+		if vim.fn.isdirectory(module_d) == 0 then
+			module_d = core_module_d .. '/' .. category .. '/' .. module
 		end
+		fey_load_module(module_d, category .. '_' .. module)
 	end
 end
