@@ -1,0 +1,38 @@
+#!/bin/sh
+case $1 in
+	install)
+		XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+		if [ ! -d "$XDG_DATA_HOME/nvim/site/pack/minpac/opt/minpac" ]; then
+			git clone --depth 1 https://github.com/k-takata/minpac.git "$XDG_DATA_HOME/nvim/site/pack/minpac/opt/minpac"
+		fi
+		if [ ! -d "$XDG_DATA_HOME/fey" ]; then
+			mkdir -p "$XDG_CONFIG_HOME/fey"
+			cp "$(dirname $(dirname $(realpath $0)))/init.example.lua" "$XDG_CONFIG_HOME/fey/init.lua"
+		fi
+		$0 sync
+		echo Installed.
+		;;
+	sync)
+		vim --headless --cmd 'lua vim.g.batch = true' +"lua minpac.update('', {['do'] = 'qall'})"
+		echo Synced.
+		;;
+	purge)
+		vim --headless --cmd 'lua vim.g.batch = true' +'lua minpac.clean()' +'qall'
+		echo
+		;;
+	upgrade)
+		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+		rm -rf "$XDG_CONFIG_HOME/nvim"
+		git clone --depth 1 https://github.com/faerryn/fey.git "$XDG_CONFIG_HOME/nvim"
+		$0 sync
+		$0 purge
+		echo Upgraded.
+		;;
+	*)
+		echo "install"
+		echo "sync"
+		echo "purge"
+		echo "upgrade"
+		;;
+esac

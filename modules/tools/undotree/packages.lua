@@ -1,0 +1,1 @@
+minpac.add'mbbill/undotree'
