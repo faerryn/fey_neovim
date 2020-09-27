@@ -24,7 +24,7 @@ case $1 in
 	upgrade)
 		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 		rm -rf "$XDG_CONFIG_HOME/nvim"
-		git clone --depth 1 https://github.com/faerryn/fey.git "$XDG_CONFIG_HOME/nvim"
+		git clone --depth 1 https://github.com/faerryn/fey_neovim.git "$XDG_CONFIG_HOME/nvim"
 		$0 sync
 		$0 purge
 		echo Upgraded.
