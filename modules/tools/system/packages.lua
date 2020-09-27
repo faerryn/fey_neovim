@@ -1,1 +1,1 @@
-minpac.add'tpope/vim-eunuch'
+minpac.add('tpope/vim-eunuch', {type = 'opt'})
