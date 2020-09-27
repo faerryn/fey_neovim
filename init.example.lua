@@ -17,11 +17,11 @@ return {
 		'fzf',
 		'git',
 		'tags',
-		'undo-tree',
+		'undo_tree',
 	},
 	ui = {
 		'colorscheme',
-		'status-line',
-		'vc-gutter',
+		'status_line',
+		'vc_gutter',
 	},
 }
