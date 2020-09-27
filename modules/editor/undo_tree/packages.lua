@@ -1,1 +1,1 @@
-minpac.add'mbbill/undotree'
+minpac.add('mbbill/undotree', {type = 'opt'})
