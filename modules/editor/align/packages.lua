@@ -1,1 +1,1 @@
-minpac.add'tommcdo/vim-lion'
+minpac.add('tommcdo/vim-lion', {type = 'opt'})
