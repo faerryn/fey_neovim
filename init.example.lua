@@ -6,6 +6,7 @@ return {
 		'exchange',
 		'navigate',
 		'surround',
+		'undo_tree',
 	},
 	lang = {
 		'zig',
@@ -13,11 +14,10 @@ return {
 	},
 	tools = {
 		'async',
-		'eunuch',
 		'fzf',
 		'git',
+		'system',
 		'tags',
-		'undo_tree',
 	},
 	ui = {
 		'colorscheme',

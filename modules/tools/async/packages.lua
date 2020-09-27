@@ -1,1 +1,1 @@
-minpac.add'skywind3000/asyncrun.vim'
+minpac.add('skywind3000/asyncrun.vim', {type = 'opt'})

@@ -8,4 +8,4 @@ function fey_tools_undo_tree()
 	vim.bo.filetype = 'undotree'
 end
 vim.cmd'nnoremap <silent> <Leader>u <cmd>lua fey_tools_undo_tree()<CR>'
-vim.cmd'autocmd fey_tools_undo_tree FileType undotree nnoremap <silent> <buffer> <C-W>c <cmd>UndotreeHide<CR>'
+vim.cmd'autocmd fey_editor_undo_tree FileType undotree nnoremap <silent> <buffer> <C-W>c <cmd>UndotreeHide<CR>'
