@@ -1,1 +1,1 @@
-minpac.add'zinit-zsh/zinit-vim-syntax'
+minpac.add('zinit-zsh/zinit-vim-syntax', {type = 'opt'})
