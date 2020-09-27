@@ -36,7 +36,7 @@ if vim.g.batch ~= nil then
 else
 	function fey_load_module(module_d, name)
 		local config_f = module_d .. '/config.lua'
-		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', " .. name .. ')')
+		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', '" .. name .. "')")
 
 		local augroup = 'fey_' .. name
 		vim.cmd('augroup ' .. augroup)
