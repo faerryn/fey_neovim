@@ -1,1 +1,1 @@
-minpac.add'machakann/vim-sandwich'
+minpac.add('machakann/vim-sandwich', {type = 'opt'})
