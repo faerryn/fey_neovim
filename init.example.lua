@@ -21,6 +21,7 @@ return {
 	},
 	ui = {
 		'colorscheme',
+		'status-line',
 		'vc-gutter',
 	},
 }
