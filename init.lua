@@ -1,3 +1,15 @@
+local config_d = vim.fn.expand'$XDG_CONFIG_HOME'
+if config_d == '' then
+	config_d = vim.fn.expand'$HOME/.config'
+end
+
+local data_d = vim.fn.expand'$XDG_DATA_HOME'
+if data_d == '' then
+	data_d = vim.fn.expand'$HOME/.local/share'
+end
+
+vim.o.packpath = data_d .. '/fey,' .. vim.o.packpath
+
 if vim.g.batch ~= nil then
 	vim.cmd'packadd minpac'
 
@@ -12,7 +24,7 @@ if vim.g.batch ~= nil then
 		status = vim.fn['minpac#status'],
 	}
 
-	minpac.init{ dir = vim.fn.stdpath'data' .. '/site', confirm = false }
+	minpac.init{ confirm = false }
 	minpac.add('k-takata/minpac', {type = 'opt'})
 end
 
@@ -49,10 +61,6 @@ end
 
 fey_load_module(core_fey_d, 'core')
 
-local config_d = vim.fn.expand'$XDG_CONFIG_HOME'
-if config_d == '' then
-	config_d = vim.fn.expand'$HOME/.config'
-end
 local user_fey_d = config_d .. '/fey'
 fey_load_module(user_fey_d, 'user')
 
