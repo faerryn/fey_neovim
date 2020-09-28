@@ -46,7 +46,6 @@ If you wander off to another directory, and want to try out FEY:
 You can use [chvim](https://github.com/faerryn/chvim)!
 
 # Installing
-**WARNING! THIS WILL DELETE YOUR OLD CONFIG**
 
 ## Automatic install
 `curl https://raw.githubusercontent.com/faerryn/fey_neovim/master/install.sh | sh`
