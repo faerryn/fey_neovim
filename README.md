@@ -15,6 +15,13 @@ e.g. `minpac.add'tpope/vim-fugitive'`
 ## 2. Lazy loading for performance
 I try my best to lazy load the plugins. Sometime it even works! It is mostly ad-hoc at this early point.
 
+# Requirements
+POSIX-compliant shell
+
+Neovim nightly
+
+ripgrep and fd are nice to have, too
+
 # Trying out
 
 Clone the repo with:
@@ -45,4 +52,27 @@ Install the everything with:
 
 `$HOME/.config/nvim/bin/fey install`
 
+Consider adding `$HOME/.config/nvim/bin` to your PATH, so you have access to `fey`.
+
 Finally, cross your fingers and `nvim`.
+
+# Configuring
+Your configurations should be in `$XDG_BASE_DIRECTORY/fey`
+
+`init.lua` returns a list of modules to be enabled.
+`config.lua` will be run on startup, so you can put your code there.
+
+`modules/category/module_name` will contain modules to be enabled in `init.lua`
+
+Each module may contain `packages.lua` and `config.lua`.
+
+`packages.lua` is run during `fey sync`. Use it to install plugins with minpac.
+
+`config.lua` is run during normal use. Use it to lazy-load your plugins and configure them.
+
+# Updating/Upgrading
+To upgrade to the latest FEY:
+`fey upgrade`
+
+To just update the plugins without upgrading FEY:
+`fey sync`
