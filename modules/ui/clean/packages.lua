@@ -1,2 +1,2 @@
-minpac.add'junegunn/goyo.vim'
-minpac.add'junegunn/limelight.vim'
+minpac.add('junegunn/goyo.vim', {type = 'opt'})
+minpac.add('junegunn/limelight.vim', {type = 'opt'})
