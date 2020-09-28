@@ -47,7 +47,6 @@ else
 	end
 end
 
-local core_fey_d = vim.fn.expand'<sfile>:p:h'
 fey_load_module(core_fey_d, 'core')
 
 local config_d = vim.fn.expand'$XDG_CONFIG_HOME'
