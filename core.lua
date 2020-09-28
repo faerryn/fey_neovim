@@ -1,4 +1,3 @@
--- basic settings
 vim.o.hidden          = true
 vim.o.clipboard       = 'unnamedplus'
 vim.o.confirm         = true
