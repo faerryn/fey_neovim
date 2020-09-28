@@ -28,11 +28,11 @@ POSIX-compliant shell
 
 Clone the repo with:
 
-`git clone https://github.com/faerryn/fey_neovim.git fey`
+`git clone https://github.com/faerryn/fey_neovim.git fey_neovim`
 
 Enter the repo:
 
-`cd fey`
+`cd fey_neovim`
 
 Install the everything with:
 
