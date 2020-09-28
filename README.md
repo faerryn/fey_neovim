@@ -1,3 +1,17 @@
+# Table of Contents
+- [FEY](#fey)
+  * [1. Well organized configs](#1-well-organized-configs)
+  * [2. Lazy loading for performance](#2-lazy-loading-for-performance)
+- [Requirements](#requirements)
+- [Trying out](#trying-out)
+- [Installing](#installing)
+  * [Automatic install](#automatic-install)
+  * [Manual install](#manual-install)
+- [Configuring](#configuring)
+- [Updating/Upgrading](#updating-upgrading)
+- [FAQ and NOTICE Board](#faq-and-notice-board)
+  * [Help! I removed FEY but I still have some FEY plugins loaded](#help--i-removed-fey-but-i-still-have-some-fey-plugins-loaded)
+
 # FEY
 Fey is a distribution of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
 
@@ -85,3 +99,8 @@ To upgrade to the latest FEY:
 
 To just update the plugins without upgrading FEY:
 `fey sync`
+
+# FAQ and NOTICE Board
+## Help! I removed FEY but I still have some FEY plugins loaded
+`rm -rf ~/.local/share/nvim/site/pack/minpac`
+This issue should no longer exist as of f5950d7035, Sep 28 2020
