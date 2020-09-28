@@ -43,6 +43,8 @@ Finally, cross your fingers and `nvim -u init.vim`.
 If you wander off to another directory, and want to try out FEY:
 `nvim -u /path/to/fey/repo/init.vim`
 
+You can use [chvim](https://github.com/faerryn/chvim)!
+
 # Installing
 **WARNING! THIS WILL DELETE YOUR OLD CONFIG**
 
