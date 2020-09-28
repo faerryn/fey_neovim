@@ -10,7 +10,7 @@ case "$1" in
 		fi
 		if [ ! -d "$XDG_DATA_HOME/fey" ]; then
 			mkdir -p "$XDG_CONFIG_HOME/fey"
-			cp "$PROJECT_ROOT/init.example.lua" "$XDG_CONFIG_HOME/fey/init.lua"
+			cp "$PROJECT_ROOT/skel/*" "$XDG_CONFIG_HOME/fey"
 		fi
 		$0 sync
 		echo Installed.
