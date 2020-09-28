@@ -1,7 +1,7 @@
 minpac.add'antoinemadec/FixCursorHold.nvim'
-minpac.add'faerryn/vim-symlink'
+minpac.add'faerryn/vim-symlink'; minpac.add'moll/vim-bbye'
 minpac.add'pbrisbin/vim-mkdir'
-minpac.add'tpope/vim-repeat'
+minpac.add('tpope/vim-repeat', {type = 'opt'})
 
 minpac.add'chaoren/vim-wordmotion'
 minpac.add'inkarkat/vim-visualrepeat'

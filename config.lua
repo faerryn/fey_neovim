@@ -26,3 +26,9 @@ function fey_core_set_colorscheme(colorscheme, background)
 	vim.cmd('colorscheme ' .. colorscheme)
 	vim.cmd'doautocmd ColorScheme'
 end
+
+-- Lazy loading
+vim.cmd'nmap . <Cmd>packadd vim-repeat<CR>.'
+vim.cmd'nmap u <Cmd>packadd vim-repeat<CR>u'
+vim.cmd'nmap U <Cmd>packadd vim-repeat<CR>U'
+vim.cmd'nmap <C-R> <Cmd>packadd vim-repeat<CR><C-R>'
