@@ -10,7 +10,6 @@
 - [Configuring](#configuring)
 - [Updating/Upgrading](#updating-upgrading)
 - [FAQ and NOTICE Board](#faq-and-notice-board)
-  * [Help! I removed FEY but I still have some FEY plugins loaded](#help--i-removed-fey-but-i-still-have-some-fey-plugins-loaded)
 
 # FEY
 Fey is a distribution of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
