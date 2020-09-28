@@ -2,7 +2,7 @@
 Fey is a distribution of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
 
 ## 1. Well organized configs
-Fey uses the idea of `modules` to organize packages and configs in a sane manner. A module looks like this:
+Fey uses the idea of `modules` from DOOM to organize packages and configs in a sane manner. A module looks like this:
 
 `~/.config/fey/modules/ui/git`
 
@@ -15,12 +15,14 @@ e.g. `minpac.add'tpope/vim-fugitive'`
 ## 2. Lazy loading for performance
 I try my best to lazy load the plugins. Sometime it even works! It is mostly ad-hoc at this early point.
 
+Many mappings and commands from plugins will call `packadd` on their first use.
+
 # Requirements
 POSIX-compliant shell
 
-Neovim nightly
+[Neovim nightly](https://github.com/neovim/neovim/releases/nightly)
 
-ripgrep and fd are nice to have, too
+[ripgrep](https://github.com/BurntSushi/ripgrep) and [fd](https://github.com/sharkdp/fd) are nice to have, too
 
 # Trying out
 
@@ -44,8 +46,12 @@ If you wander off to another directory, and want to try out FEY:
 # Installing
 **WARNING! THIS WILL DELETE YOUR OLD CONFIG**
 
+## Automatic install
 `curl https://raw.githubusercontent.com/faerryn/fey_neovim/master/install.sh | sh`
 
+Your old config will be in `~/.config/nvim.backup`
+
+## Manual install
 Clone the repo with:
 
 `git clone https://github.com/faerryn/fey_neovim.git $HOME/.config/nvim`
@@ -59,7 +65,7 @@ Consider adding `$HOME/.config/nvim/bin` to your PATH, so you have access to `fe
 Finally, cross your fingers and `nvim`.
 
 # Configuring
-Your configurations should be in `$XDG_BASE_DIRECTORY/fey` aka `~/.config/fey`
+Your configurations should be in `~/.config/fey`
 
 `init.lua` returns a list of modules to be enabled.
 `config.lua` will be run on startup, so you can put your code there.
