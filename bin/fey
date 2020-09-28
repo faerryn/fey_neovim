@@ -1,6 +1,5 @@
 #!/bin/sh
 PROJECT_ROOT="$(dirname $(dirname $(realpath $0)))"
-NVIM_COMMAND="nvim -u $PROJECT_ROOT/init.vim --headless --cmd 'lua vim.g.batch = true'"
 case "$1" in
 
 	install)
@@ -18,12 +17,12 @@ case "$1" in
 		;;
 
 	sync)
-		$NVIM_COMMAND +"lua minpac.update('', {['do'] = 'qall'})"
+		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +"lua minpac.update('', {['do'] = 'qall'})"
 		echo Synced.
 		;;
 
 	purge)
-		$NVIM_COMMAND +'lua minpac.clean()' +'qall'
+		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +'lua minpac.clean()' +'qall'
 		echo
 		;;
 
