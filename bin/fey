@@ -3,8 +3,8 @@ PROJECT_ROOT="$(dirname $(dirname $(realpath $0)))"
 case "$1" in
 
 	install)
-		XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
-		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+		XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
+		XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 		if [ ! -d "$XDG_DATA_HOME/nvim/site/pack/minpac/opt/minpac" ]; then
 			git clone --depth 1 https://github.com/k-takata/minpac.git "$XDG_DATA_HOME/nvim/site/pack/minpac/opt/minpac"
 		fi
