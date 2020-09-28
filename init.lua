@@ -59,14 +59,15 @@ else
 	end
 end
 
-fey_load_module(core_fey_d, 'core')
+fey_core_d = vim.fn.expand('<sfile>:p:h')
+fey_load_module(fey_core_d, 'core')
 
-local user_fey_d = config_d .. '/fey'
-fey_load_module(user_fey_d, 'user')
+fey_user_d = config_d .. '/fey'
+fey_load_module(fey_user_d, 'user')
 
-local init_f = user_fey_d .. '/init.lua'
-local core_module_d = core_fey_d .. '/modules'
-local user_modules_d = user_fey_d .. '/modules'
+local init_f = fey_user_d .. '/init.lua'
+local core_module_d = fey_core_d .. '/modules'
+local user_modules_d = fey_user_d .. '/modules'
 
 for category, modules in pairs(dofile(init_f)) do
 	for _, module in ipairs(modules) do
