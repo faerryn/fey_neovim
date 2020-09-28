@@ -24,10 +24,10 @@ return {
 	},
 
 	ui = {
+		'clean', -- goyo + limelight with <Space><Space>
 		'colorscheme', -- gruvbox
 		'status_line', -- lightline
 		'vc_gutter', -- get version-control info in the gutter!
-		'clean', -- goyo + limelight with <Space><Space>
 	},
 
 }
