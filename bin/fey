@@ -22,7 +22,7 @@ case "$1" in
 		;;
 
 	purge)
-		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +'lua minpac.clean()' +'qall'
+		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +'lua minpac.clean(); vim.cmd"qall"'
 		echo
 		;;
 
