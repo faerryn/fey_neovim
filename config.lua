@@ -26,16 +26,3 @@ function fey_core_set_colorscheme(colorscheme, background)
 	vim.cmd('colorscheme ' .. colorscheme)
 	vim.cmd'doautocmd ColorScheme'
 end
-
--- Lazy loading
-function fey_core_repeat()
-	vim.cmd'packadd vim-repeat'
-	vim.cmd'nmap . <Plug>(RepeatDot)'
-	vim.cmd'nmap u <Plug>(RepeatUndo)'
-	vim.cmd'nmap U <Plug>(RepeatUndoLine)'
-	vim.cmd'nmap <C-R> <Plug>(RepeatRedo)'
-end
-vim.cmd'nmap .     <Cmd>lua fey_core_repeat()<CR>.'
-vim.cmd'nmap u     <Cmd>lua fey_core_repeat()<CR>u'
-vim.cmd'nmap U     <Cmd>lua fey_core_repeat()<CR>U'
-vim.cmd'nmap <C-R> <Cmd>lua fey_core_repeat()<CR><C-R>'
