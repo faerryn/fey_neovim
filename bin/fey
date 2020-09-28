@@ -1,5 +1,7 @@
 #!/bin/sh
+PROJECT_ROOT="$(dirname $(dirname $(realpath $0)))"
 case "$1" in
+
 	install)
 		XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
@@ -8,33 +10,39 @@ case "$1" in
 		fi
 		if [ ! -d "$XDG_DATA_HOME/fey" ]; then
 			mkdir -p "$XDG_CONFIG_HOME/fey"
-			cp "$(dirname $(dirname $(realpath $0)))/init.example.lua" "$XDG_CONFIG_HOME/fey/init.lua"
+			cp "$PROJECT_ROOT/init.example.lua" "$XDG_CONFIG_HOME/fey/init.lua"
 		fi
 		$0 sync
 		echo Installed.
 		;;
+
 	sync)
 		vim --headless --cmd 'lua vim.g.batch = true' +"lua minpac.update('', {['do'] = 'qall'})"
 		echo Synced.
 		;;
+
 	purge)
 		vim --headless --cmd 'lua vim.g.batch = true' +'lua minpac.clean()' +'qall'
 		echo
 		;;
+
 	upgrade)
-		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-		git -C "$XDG_CONFIG_HOME/nvim" pull
+		git -C "$PROJECT_ROOT" pull
 		$0 sync
 		$0 purge
 		echo Upgraded.
 		;;
+
 	up)
 		$0 upgrade
 		;;
+
 	*)
-		echo "install"
-		echo "sync"
-		echo "purge"
-		echo "upgrade"
+		echo "install -- run this first to setup minpac and a skeleton config"
+		echo "sync    -- run this every time you modify init.lua"
+		echo "purge   -- run this to clean up old plugins no longer required on init.lua which may still load on startup"
+		echo "upgrade -- run this to fetch the latest version of FEY. if it fails, try deleting the repo and cloning again."
+		echo "up      -- same as upgrade"
 		;;
+
 esac
