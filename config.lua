@@ -19,7 +19,7 @@ if vim.fn.executable'rg' then
 end
 
 vim.cmd'autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}'
-vim.cmd'autocmd BufReadPost * lua pcall(vim.api.nvim_win_set_cursor, 0, vim.api.nvim_buf_get_mark(0, "\\""))'
+vim.cmd'autocmd BufReadPost * lua if vim.bo.filetype ~= "gitcommit" then pcall(vim.api.nvim_win_set_cursor, 0, vim.api.nvim_buf_get_mark(0, "\\"")) end'
 
 function fey_core_set_colorscheme(colorscheme, background)
 	vim.o.background = background
