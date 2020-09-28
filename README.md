@@ -57,7 +57,7 @@ Consider adding `$HOME/.config/nvim/bin` to your PATH, so you have access to `fe
 Finally, cross your fingers and `nvim`.
 
 # Configuring
-Your configurations should be in `$XDG_BASE_DIRECTORY/fey`
+Your configurations should be in `$XDG_BASE_DIRECTORY/fey` aka `~/.config/fey`
 
 `init.lua` returns a list of modules to be enabled.
 `config.lua` will be run on startup, so you can put your code there.
