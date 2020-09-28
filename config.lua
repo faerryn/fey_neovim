@@ -53,6 +53,7 @@ vim.cmd'autocmd BufReadPost * lua if vim.bo.filetype ~= "gitcommit" then pcall(v
 
 -- Lazy loading
 vim.cmd'autocmd fey_core CmdlineEnter * ++once packadd readline.vim'
+vim.cmd'autocmd fey_core FileType qf ++once packadd vim-qf'
 
 -- API
 function fey_core_set_colorscheme(colorscheme, background)
