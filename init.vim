@@ -1,1 +1,1 @@
-luafile %:p:h/init.lua
+luafile <sfile>:p:h/init.lua
