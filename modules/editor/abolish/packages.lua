@@ -1,1 +1,1 @@
-minpac.add'tpope/vim-abolish'
+minpac.add('tpope/vim-abolish', {type = 'opt'})
