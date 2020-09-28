@@ -8,7 +8,7 @@ case "$1" in
 		if [ ! -d "$XDG_DATA_HOME/fey/pack/minpac/opt/minpac" ]; then
 			git clone --depth 1 https://github.com/k-takata/minpac.git "$XDG_DATA_HOME/fey/pack/minpac/opt/minpac"
 		fi
-		if [ ! -d "$XDG_DATA_HOME/fey" ]; then
+		if [ ! -d "$XDG_CONFIG_HOME/fey" ]; then
 			mkdir -p "$XDG_CONFIG_HOME"
 			cp -r "$PROJECT_ROOT/skel" "$XDG_CONFIG_HOME/fey"
 		fi
