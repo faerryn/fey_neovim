@@ -1,5 +1,5 @@
 #!/bin/sh
-case $1 in
+case "$1" in
 	install)
 		XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 		XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
@@ -27,6 +27,9 @@ case $1 in
 		$0 sync
 		$0 purge
 		echo Upgraded.
+		;;
+	up)
+		$0 upgrade
 		;;
 	*)
 		echo "install"
