@@ -44,6 +44,8 @@ If you wander off to another directory, and want to try out FEY:
 # Installing
 **WARNING! THIS WILL DELETE YOUR OLD CONFIG**
 
+`curl https://raw.githubusercontent.com/faerryn/fey_neovim/master/install.sh | sh`
+
 Clone the repo with:
 
 `git clone https://github.com/faerryn/fey_neovim.git $HOME/.config/nvim`

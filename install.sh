@@ -1,5 +1,5 @@
 #!/bin/sh
-CONFIG_NVIM_D="${XDG_CONFIG_HOME:-$HOME}/.config/nvim"
+CONFIG_NVIM_D="${XDG_CONFIG_HOME:-"$HOME/.config"}/nvim"
 if [ -d "$CONFIG_NVIM_D" ]; then
 	if [ -f "$CONFIG_NVIM_D.backup" ]; then
 		echo "backup directory $CONFIG_NVIM_D.backup already in use!"
