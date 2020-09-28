@@ -1,4 +1,5 @@
 return {
+
 	editor = {
 		'abolish',
 		'align',
@@ -8,10 +9,12 @@ return {
 		'surround',
 		'undo_tree',
 	},
+
 	lang = {
 		'zig',
 		'zsh',
 	},
+
 	tools = {
 		'async',
 		'fzf',
@@ -19,9 +22,11 @@ return {
 		'system',
 		'tags',
 	},
+
 	ui = {
 		'colorscheme',
 		'status_line',
 		'vc_gutter',
 	},
+
 }
