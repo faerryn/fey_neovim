@@ -7,4 +7,4 @@ minpac.add'chaoren/vim-wordmotion'
 minpac.add'inkarkat/vim-visualrepeat'
 minpac.add'justinmk/vim-dirvish'
 minpac.add'romainl/vim-qf'
-minpac.add'ryvnf/readline.vim'
+minpac.add('ryvnf/readline.vim', {type = 'opt'})
