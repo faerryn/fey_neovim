@@ -18,18 +18,14 @@ case "$1" in
 
 	sync)
 		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +"lua minpac.update('', {['do'] = 'qall'})"
-		echo Synced.
-		;;
-
-	purge)
 		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +'lua minpac.clean(); vim.cmd"qall"'
 		echo
+		echo Synced.
 		;;
 
 	upgrade)
 		git -C "$PROJECT_ROOT" pull
 		$0 sync
-		$0 purge
 		echo Upgraded.
 		;;
 
@@ -44,7 +40,6 @@ case "$1" in
 	*)
 		echo "install -- run this first to setup minpac and a skeleton config"
 		echo "sync    -- run this every time you modify init.lua"
-		echo "purge   -- run this to clean up old plugins no longer required on init.lua which may still load on startup"
 		echo "upgrade -- run this to fetch the latest version of FEY. if it fails, try deleting the repo and cloning again."
 		echo "up      -- same as upgrade"
 		echo "default -- show a default init.lua file"
