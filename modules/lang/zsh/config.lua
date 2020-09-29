@@ -1,1 +1,1 @@
-vim.cmd'autocmd fey_lang_zsh FileType zsh ++once packadd zinit-vim-syntax'
+vim.cmd'autocmd FileType zsh ++once packadd zinit-vim-syntax'

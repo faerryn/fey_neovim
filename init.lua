@@ -41,21 +41,26 @@ function load_file_lenient(file)
 	return result
 end
 
+fey = {}
+
 if vim.g.batch ~= nil then
 	function fey_load_module(module_d, name)
 		load_file_lenient(module_d .. '/packages.lua')
 	end
 else
 	function fey_load_module(module_d, name)
+		fey[name] = {}
+
 		local config_f = module_d .. '/config.lua'
 		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', '" .. name .. "')")
 
 		local augroup = 'fey_' .. name
 		vim.cmd('augroup ' .. augroup)
 		vim.cmd('autocmd! ' .. augroup)
-		vim.cmd('augroup END')
 
 		load_file_lenient(config_f)
+
+		vim.cmd('augroup END')
 	end
 end
 

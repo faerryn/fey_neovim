@@ -87,7 +87,7 @@ vim.cmd'autocmd fey_core CmdlineEnter * ++once packadd readline.vim'
 vim.cmd'autocmd fey_core FileType qf ++once packadd vim-qf'
 
 -- API
-function fey_core_set_colorscheme(colorscheme, background)
+fey.core.set_colorscheme = function(colorscheme, background)
 	vim.o.background = background
 	vim.cmd('colorscheme ' .. colorscheme)
 	vim.cmd'doautocmd ColorScheme'

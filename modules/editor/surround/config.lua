@@ -14,12 +14,13 @@ vim.g.sandwich_no_default_key_mappings          = 1
 vim.g.operator_sandwich_no_default_key_mappings = 1
 vim.g.textobj_sandwich_no_default_key_mappings  = 1
 
-function fey_editor_surround()
+fey.editor_surround.surround = function()
+	fey.editor_surround.surround = nil
 	vim.cmd'packadd vim-sandwich'
 	vim.cmd'map <silent> sa <Plug>(operator-sandwich-add)'
 	vim.cmd'nmap <silent> sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)'
 	vim.cmd'nmap <silent> sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)'
 end
-vim.cmd'map <silent> sa <Cmd>lua fey_editor_surround()<CR>sa'
-vim.cmd'nmap <silent> sd <Cmd>lua fey_editor_surround()<CR>sd'
-vim.cmd'nmap <silent> sr <Cmd>lua fey_editor_surround()<CR>sr'
+vim.cmd'map <silent> sa <Cmd>lua fey.editor_surround.surround()<CR>sa'
+vim.cmd'nmap <silent> sd <Cmd>lua fey.editor_surround.surround()<CR>sd'
+vim.cmd'nmap <silent> sr <Cmd>lua fey.editor_surround.surround()<CR>sr'

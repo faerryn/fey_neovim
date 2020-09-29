@@ -1,8 +1,8 @@
-function fey_ui_status_line_lightline()
-	vim.g.lightline = { tabline = { right = {} }, colorscheme = vim.g.colors_name or 'default' }
-	if vim.g.loaded_lightline ~= nil then
-		vim.fn['lightline#enable']()
+fey.ui_status_line.lightline = function()
+	if vim.g.loaded_lightline == nil then
+		vim.cmd'packadd lightline.vim'
 	end
+	vim.g.lightline = { tabline = { right = {} }, colorscheme = vim.g.colors_name or 'default' }
+	vim.fn['lightline#enable']()
 end
-vim.cmd'autocmd fey_ui_status_line VimEnter,ColorScheme * lua fey_ui_status_line_lightline()'
-vim.cmd'packadd lightline.vim'
+vim.cmd'autocmd VimEnter,ColorScheme * lua fey.ui_status_line.lightline()'

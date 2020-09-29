@@ -1,1 +1,1 @@
-fey_core_set_colorscheme('gruvbox', 'dark')
+fey.core.set_colorscheme('gruvbox', 'dark')

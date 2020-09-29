@@ -10,8 +10,8 @@ return {
 	},
 
 	lang = {
-		-- 'zig',
-		-- 'zsh',
+		-- 'zig', -- space dino
+		-- 'zsh', -- a nice shell script
 	},
 
 	tools = {
@@ -19,7 +19,7 @@ return {
 		'fzf', -- <Space>f to find a file
 		'git', -- <Space>g to bring up fugitive, :G to use git
 		'system', -- vim-eunuch for interacting with the filesystem
-		-- 'tags',
+		-- 'tags', -- generate ctags in your /usr/include and turn this on!
 		'undo_tree', -- bring up an undotree with <Space>u
 	},
 
