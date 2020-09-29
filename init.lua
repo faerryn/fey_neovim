@@ -63,6 +63,7 @@ else
 
 		vim.cmd('augroup END')
 	end
+
 end
 
 fey_core_d = vim.fn.expand('<sfile>:p:h')
@@ -90,7 +91,5 @@ for category, modules in pairs(dofile(init_f)) do
 			module_d = core_module_d .. '/' .. category .. '/' .. module
 		end
 		fey_load_module(module_d, category .. '_' .. module, features)
-	end
-	for _, module in ipairs(modules) do
 	end
 end
