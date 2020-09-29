@@ -80,7 +80,7 @@ end
 vim.cmd'autocmd TextYankPost * lua vim.highlight.on_yank{timeout=500}'
 
 -- Remember last cursor position
-vim.cmd'autocmd BufReadPost * lua if vim.bo.filetype ~= "gitcommit" then pcall(vim.api.nvim_win_set_cursor, 0, vim.api.nvim_buf_get_mark(0, "\\"")) end'
+vim.cmd'autocmd BufReadPost * lua pcall(vim.api.nvim_win_set_cursor, 0, vim.api.nvim_buf_get_mark(0, "\\""))'
 
 -- Lazy loading
 vim.cmd'autocmd fey_core CmdlineEnter * ++once packadd readline.vim'

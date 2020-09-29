@@ -44,12 +44,16 @@ end
 fey = {}
 
 if vim.g.batch ~= nil then
-	function fey_load_module(module_d, name)
+
+	function fey_load_module(module_d, name, features)
+		fey[name] = { features = features }
 		load_file_lenient(module_d .. '/packages.lua')
 	end
+
 else
-	function fey_load_module(module_d, name)
-		fey[name] = {}
+
+	function fey_load_module(module_d, name, features)
+		fey[name] = { features = features }
 
 		local config_f = module_d .. '/config.lua'
 		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', '" .. name .. "')")
@@ -75,11 +79,21 @@ local core_module_d = fey_core_d .. '/modules'
 local user_modules_d = fey_user_d .. '/modules'
 
 for category, modules in pairs(dofile(init_f)) do
-	for _, module in ipairs(modules) do
+	for key, value in pairs(modules) do
+		local module = type(key) == 'string' and key or value
+		local features = type(value) == 'table' and value or {}
+		for key, value in pairs(features) do
+			if type(key) == 'number' and type(value) == 'string' then
+				features[value] = 1
+			end
+		end
+
 		local module_d = user_modules_d .. '/' .. category .. '/' .. module
 		if vim.fn.isdirectory(module_d) == 0 then
 			module_d = core_module_d .. '/' .. category .. '/' .. module
 		end
-		fey_load_module(module_d, category .. '_' .. module)
+		fey_load_module(module_d, category .. '_' .. module, features)
+	end
+	for _, module in ipairs(modules) do
 	end
 end
