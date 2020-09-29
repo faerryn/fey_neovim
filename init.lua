@@ -28,7 +28,7 @@ if vim.g.batch ~= nil then
 	minpac.add('k-takata/minpac', {type = 'opt'})
 end
 
-function load_file_lenient(file)
+local function load_file_lenient(file)
 	if vim.fn.filereadable(file) == 0 then return end
 	local status, result = pcall(dofile, file)
 	if not status then
@@ -42,14 +42,14 @@ fey = {}
 
 if vim.g.batch ~= nil then
 
-	function fey_load_module(module_d, name, features)
+	fey.load_module = function(module_d, name, features)
 		fey[name] = { features = features }
 		load_file_lenient(module_d .. '/packages.lua')
 	end
 
 else
 
-	function fey_load_module(module_d, name, features)
+	fey.load_module = function(module_d, name, features)
 		fey[name] = { features = features }
 
 		local config_f = module_d .. '/config.lua'
@@ -57,7 +57,7 @@ else
 		local augroup = 'fey_' .. name
 		vim.cmd('augroup ' .. augroup)
 		vim.cmd('autocmd! ' .. augroup)
-		vim.cmd('autocmd! BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', '" .. name .. "')")
+		vim.cmd('autocmd! BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey.load_module('" .. module_d .. "', '" .. name .. "')")
 
 		load_file_lenient(config_f)
 
@@ -67,10 +67,10 @@ else
 end
 
 fey_core_d = vim.fn.expand('<sfile>:p:h')
-fey_load_module(fey_core_d, 'core')
+fey.load_module(fey_core_d, 'core')
 
 fey_user_d = config_d .. '/fey'
-fey_load_module(fey_user_d, 'user')
+fey.load_module(fey_user_d, 'user')
 
 local init_f = fey_user_d .. '/init.lua'
 local core_module_d = fey_core_d .. '/modules'
@@ -90,6 +90,6 @@ for category, modules in pairs(dofile(init_f)) do
 		if vim.fn.isdirectory(module_d) == 0 then
 			module_d = core_module_d .. '/' .. category .. '/' .. module
 		end
-		fey_load_module(module_d, category .. '_' .. module, features)
+		fey.load_module(module_d, category .. '_' .. module, features)
 	end
 end
