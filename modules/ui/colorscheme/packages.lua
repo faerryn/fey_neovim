@@ -1,1 +1,1 @@
-minpac.add'gruvbox-community/gruvbox'
+minpac.add('gruvbox-community/gruvbox', {type = 'opt'})

@@ -5,3 +5,4 @@ function fey_ui_status_line_lightline()
 	end
 end
 vim.cmd'autocmd fey_ui_status_line VimEnter,ColorScheme * lua fey_ui_status_line_lightline()'
+vim.cmd'packadd lightline.vim'

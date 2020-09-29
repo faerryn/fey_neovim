@@ -1,1 +1,1 @@
-minpac.add'mhinz/vim-signify'
+minpac.add('mhinz/vim-signify', {type = 'opt'})

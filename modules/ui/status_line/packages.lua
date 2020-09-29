@@ -1,1 +1,1 @@
-minpac.add'itchyny/lightline.vim'
+minpac.add('itchyny/lightline.vim', {type = 'opt'})
