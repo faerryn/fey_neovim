@@ -28,9 +28,6 @@ if vim.g.batch ~= nil then
 	minpac.add('k-takata/minpac', {type = 'opt'})
 end
 
-vim.cmd'augroup fey_reload'
-vim.cmd'augroup END'
-
 function load_file_lenient(file)
 	if vim.fn.filereadable(file) == 0 then return end
 	local status, result = pcall(dofile, file)
@@ -56,11 +53,11 @@ else
 		fey[name] = { features = features }
 
 		local config_f = module_d .. '/config.lua'
-		vim.cmd('autocmd! fey_reload BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', '" .. name .. "')")
 
 		local augroup = 'fey_' .. name
 		vim.cmd('augroup ' .. augroup)
 		vim.cmd('autocmd! ' .. augroup)
+		vim.cmd('autocmd! BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey_load_module('" .. module_d .. "', '" .. name .. "')")
 
 		load_file_lenient(config_f)
 
