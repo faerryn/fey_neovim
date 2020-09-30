@@ -10,7 +10,9 @@ end
 
 vim.o.packpath = data_d .. '/fey,' .. vim.o.packpath
 
-if vim.g.batch ~= nil then
+local fey_load_packages = vim.g.fey_load_packages == true or (type(vim.g.fey_load_packages) == 'number' and vim.g.fey_load_packages ~= 0)
+local fey_load_config = vim.g.fey_load_config == nil or vim.g.fey_load_config == true or (type(vim.g.fey_load_config) == 'number' and vim.g.fey_load_config ~= 0)
+if fey_load_packages then
 	vim.cmd'packadd minpac'
 
 	minpac = {
@@ -38,20 +40,16 @@ local function load_file_lenient(file)
 	return result
 end
 
-fey = {}
+if fey == nil then fey = {} end
 
-if vim.g.batch ~= nil then
+fey.load_module = function(module_d, name, features)
+	if fey[name] == nil then fey[name] = {} end
+	fey[name].features = features
 
-	fey.load_module = function(module_d, name, features)
-		fey[name] = { features = features }
+	if fey_load_packages then
 		load_file_lenient(module_d .. '/packages.lua')
 	end
-
-else
-
-	fey.load_module = function(module_d, name, features)
-		fey[name] = { features = features }
-
+	if fey_load_config then
 		local config_f = module_d .. '/config.lua'
 
 		local augroup = 'fey_' .. name
@@ -63,8 +61,8 @@ else
 
 		vim.cmd('augroup END')
 	end
-
 end
+
 
 fey_core_d = vim.fn.expand'<sfile>:p:h'
 fey.load_module(fey_core_d, 'core')

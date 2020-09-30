@@ -17,13 +17,13 @@ case "$1" in
 		;;
 
 	sync)
-		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +"lua minpac.update('', {['do'] = 'qall'})"
-		echo
+		nvim --headless --cmd 'lua vim.g.fey_load_packages = true; vim.g.fey_load_config = false' -u "$PROJECT_ROOT/init.vim" +"lua minpac.update('', {['do'] = 'qall'})"
+		echo Synced.
 		;;
 
 	purge)
-		nvim --headless --cmd 'lua vim.g.batch = true' -u "$PROJECT_ROOT/init.vim" +'lua minpac.clean(); vim.cmd"qall"'
-		echo Synced.
+		nvim --headless --cmd 'lua vim.g.fey_load_packages = true; vim.g.fey_load_config = false' -u "$PROJECT_ROOT/init.vim" +'lua minpac.clean(); vim.cmd"qall"'
+		echo
 		;;
 
 	upgrade)
@@ -40,6 +40,11 @@ case "$1" in
 		cat "$PROJECT_ROOT/skel/${2:-init.lua}"
 		;;
 
+	run)
+		shift
+		exec nvim -u "$PROJECT_ROOT/init.vim" "$@"
+		;;
+
 	*)
 		echo "install -- run this first to setup minpac and a skeleton config"
 		echo "sync    -- run this every time you modify init.lua"
@@ -47,6 +52,7 @@ case "$1" in
 		echo "upgrade -- run this to fetch the latest version of FEY"
 		echo "up      -- same as upgrade"
 		echo "default -- show a default init.lua or config.lua (init.lua by default)"
+		echo "run     -- run FEY Neovim"
 		;;
 
 esac
