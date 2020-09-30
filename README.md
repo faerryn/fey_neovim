@@ -12,7 +12,7 @@
 - [FAQ and NOTICE Board](#faq-and-notice-board)
 
 # FEY
-Fey is a configuration framework of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
+Fey is a configuration framework with bad defaults (so that you override them!) of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
 
 ## 1. Well organized configs
 Fey uses the idea of `modules` from DOOM to organize packages and configs in a sane manner. A module looks like this:
