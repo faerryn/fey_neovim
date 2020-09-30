@@ -66,7 +66,7 @@ else
 
 end
 
-fey_core_d = vim.fn.expand('<sfile>:p:h')
+fey_core_d = vim.fn.expand'<sfile>:p:h'
 fey.load_module(fey_core_d, 'core')
 
 fey_user_d = config_d .. '/fey'
