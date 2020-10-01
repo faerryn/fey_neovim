@@ -19,16 +19,17 @@ return {
 
 	tools = {
 		'async',
+		'eunuch',
+		'filesystem',
 		'fzf',
 		'git',
-		'system',
 		-- 'tags',
 		'undo_tree',
 	},
 
 	ui = {
-		-- 'clean',
 		'colorscheme',
+		-- 'goyo',
 		'status_line',
 		'vc_gutter',
 	},

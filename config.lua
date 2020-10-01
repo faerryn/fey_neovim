@@ -25,10 +25,6 @@ vim.cmd'autocmd FileType qf nnoremap <silent> <buffer> q <C-W>c'
 vim.cmd'noremap <silent> S <Nop>'
 vim.cmd'noremap <silent> s <Nop>'
 
--- Disable netrw
-vim.g.loaded_netrw       = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Leader key
 vim.g.mapleader       = ' '
 
@@ -93,8 +89,6 @@ vim.cmd'packadd vim-repeat'
 vim.cmd'packadd vim-visualrepeat'
 
 vim.cmd'packadd vim-wordmotion'
-
-vim.cmd'packadd vim-dirvish'
 
 -- Lazy loading
 vim.cmd'autocmd fey_core CmdlineEnter * ++once packadd readline.vim'
