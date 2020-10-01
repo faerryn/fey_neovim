@@ -23,7 +23,7 @@ where `ui` is the category and `git` is the module name.
 
 `~/.config/fey/modules/ui/git/packages.lua` is the packages file, which FEY will run during `fey sync`. It usually contains minpac calls.
 
-e.g. `minpac.add'tpope/vim-fugitive'`
+e.g. `minpac.add('tpope/vim-fugitive', {type = 'opt')`
 
 ## 2. Lazy loading for performance
 I try my best to lazy load the plugins. Sometime it even works! It is mostly ad-hoc at this early point.
