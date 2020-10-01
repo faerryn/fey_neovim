@@ -19,8 +19,8 @@ return {
 
 	tools = {
 		'async',
+		'dirvish',
 		'eunuch',
-		'filesystem',
 		'fzf',
 		'git',
 		-- 'tags',
