@@ -10,6 +10,7 @@ return {
 	},
 
 	lang = {
+		-- 'org'
 		-- 'zig',
 		-- zsh = {
 		-- 	'zinit',
