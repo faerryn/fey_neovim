@@ -1,10 +1,13 @@
--- the ~/.config or wherever the user has config files
+-- the installation path of FEY
+fey_core_d = vim.fn.expand'<sfile>:p:h'
+
+-- ~/.config or wherever the user has config files
 local config_d = vim.fn.expand'$XDG_CONFIG_HOME'
 if config_d == '' then
 	config_d = vim.fn.expand'$HOME/.config'
 end
 
--- the ~/.local/share or wherever the user has data files
+-- ~/.local/share or wherever the user has data files
 local data_d = vim.fn.expand'$XDG_DATA_HOME'
 if data_d == '' then
 	data_d = vim.fn.expand'$HOME/.local/share'
@@ -85,12 +88,14 @@ end
 
 -- loads ~/.config/nvim, or wherever FEY is installed. Runs the /packages.lua
 -- and /config.lua
-fey_core_d = vim.fn.expand'<sfile>:p:h'
 fey.load_module(fey_core_d, 'core')
 
 -- loads ~/.config/fey, or similar. Runs the user's /packages.lua
 -- and the user's /config.lua
 fey_user_d = config_d .. '/fey'
+if vim.fn.isdirectory(fey_user_d) == 0 then
+	fey_user_d = fey_core_d .. '/skel'
+end
 fey.load_module(fey_user_d, 'user')
 
 -- the user's init.lua contains a list of modules to activate

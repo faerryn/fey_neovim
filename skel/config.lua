@@ -1,1 +1,2 @@
-fey.core.set_colorscheme('gruvbox', 'dark')
+vim.cmd'colorscheme gruvbox'
+vim.o.background = 'dark'
