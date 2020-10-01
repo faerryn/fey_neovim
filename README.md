@@ -103,3 +103,6 @@ To just update the plugins without upgrading FEY:
 ## Help! I removed FEY but I still have some FEY plugins loaded
 `rm -rf ~/.local/share/nvim/site/pack/minpac`
 This issue should no longer exist as of f5950d7035, Sep 28 2020
+## Help! A crazy project maintainer broke my init.lua :(
+`fey default`
+This should print out the default init.lua, and you can find what got changed
