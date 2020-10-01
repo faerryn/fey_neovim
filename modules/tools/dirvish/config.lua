@@ -3,4 +3,4 @@ vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- load up vim-dirvish
-vim.cmd'autocmd BufEnter * if isdirectory(expand("%")) | packadd vim-dirvish | set filetype=dirvish | edit | autocmd! fey_tools_filesystem'
+vim.cmd'autocmd BufEnter * if isdirectory(expand("%")) | packadd vim-dirvish | set filetype=dirvish | edit | autocmd! fey_tools_dirvish'
