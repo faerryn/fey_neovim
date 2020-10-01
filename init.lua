@@ -32,6 +32,14 @@ local function load_file_lenient(file)
 	end
 	return result
 end
+local function add_to_autload(module_d, name, config_f) 
+	local augroup = 'fey_' .. name
+	local autocmd_format = "autocmd! BufWritePost %s lua fey.load_module('%s', '%s')"
+	vim.cmd('augroup ' .. augroup)
+	vim.cmd('autocmd! ' .. augroup)
+	vim.cmd(string.format(autocmd_format, vim.fn.resolve(config_f), module_d, name))
+	vim.cmd('augroup END')
+end
 
 -- fey will contain 'public' global values and functions
 if fey == nil then fey = {} end
@@ -42,19 +50,11 @@ fey.load_module = function(module_d, name, features)
 	-- populate fey[name] with features
 	if fey[name] == nil then fey[name] = {} end
 	fey[name].features = features
-
-		-- load config.lua, with an augroup setup for the file's own
-		-- use and for us to put an autoreload autocmd
-		local config_f = module_d .. '/config.lua'
-
-		local augroup = 'fey_' .. name
-		vim.cmd('augroup ' .. augroup)
-		vim.cmd('autocmd! ' .. augroup)
-		vim.cmd('autocmd! BufWritePost ' .. vim.fn.resolve(config_f) .. " lua fey.load_module('" .. module_d .. "', '" .. name .. "')")
-
-		load_file_lenient(config_f)
-
-		vim.cmd('augroup END')
+	-- load config.lua, with an augroup setup for the file's own
+	-- use and for us to put an autoreload autocmd
+	local config_f = module_d .. '/config.lua'
+	add_to_autload(module_d, name, config_f)
+	load_file_lenient(config_f)
 end
 
 -- root path of init.lua to config/fey or ./skel
