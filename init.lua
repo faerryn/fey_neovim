@@ -104,7 +104,7 @@ local core_module_d = fey_core_d .. '/modules'
 local user_modules_d = fey_user_d .. '/modules'
 
 -- /modules is split into categories
-for category, modules in pairs(dofile(init_f)) do
+for category, modules in pairs(load_file_lenient(init_f) or {}) do
 	-- that contain modules
 	for key, value in pairs(modules) do
 		-- sometimes the module's name is a string in list, sometimes
