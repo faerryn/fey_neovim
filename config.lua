@@ -6,8 +6,6 @@ vim.o.mouse           = 'ar'
 vim.o.timeoutlen      = 500
 vim.o.updatetime      = 500
 
-vim.o.termguicolors   = true
-
 -- Persistent Files
 vim.o.shadafile       = vim.fn.stdpath'cache' .. '/shada/main.shada'
 vim.o.directory       = vim.fn.stdpath'cache' .. '/swap'
