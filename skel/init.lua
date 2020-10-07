@@ -22,7 +22,6 @@ return {
 		'eunuch',
 		'fzf',
 		'git',
-		-- 'tags',
 		'undo_tree',
 		'unimpaired',
 	},
