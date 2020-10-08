@@ -1,1 +1,1 @@
-minpac.add('faerryn/zig.vim', {type = 'opt'})
+minpac.add('zig/zig.vim', {type = 'opt'})
