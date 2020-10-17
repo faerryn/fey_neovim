@@ -1,1 +1,1 @@
-minpac.add('zig/zig.vim', {type = 'opt'})
+minpac.add('ziglang/zig.vim', {type = 'opt'})
