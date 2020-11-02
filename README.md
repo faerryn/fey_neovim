@@ -11,8 +11,8 @@
 - [Updating/Upgrading](#updating-upgrading)
 - [FAQ and NOTICE Board](#faq-and-notice-board)
 
-# NOTICE: FEY is no longer maintained, since I'm stuck on Windows.
-Check out https://github.com/faerryn/config/tree/master/neovim/.config/nvim for a very VimL config in the same spirit as FEY, but simpler.
+# NOTICE: I have returned from Windows.
+Check out https://github.com/faerryn/config/tree/master/neovim/.config/nvim for a VimL config in the same spirit as FEY, but works on stable!
 
 # FEY
 Fey is a configuration framework with bad defaults (so that you override them!) of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
