@@ -11,7 +11,7 @@
 - [Updating/Upgrading](#updating-upgrading)
 - [FAQ and NOTICE Board](#faq-and-notice-board)
 
-# NOTICE: I have returned from Windows.
+# NOTICE: I have migrated to Emacs and am no longer using this project
 Check out [my pure VimL implementation of this](https://github.com/faerryn/config/tree/ac15677a46c8d9653f12ea12017273c25ef12649/neovim/.config/nvim) for an easy-to-use config in the same spirit as FEY, but works on stable!
 
 # FEY
