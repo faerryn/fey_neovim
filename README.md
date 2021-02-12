@@ -11,8 +11,8 @@
 - [Updating/Upgrading](#updating-upgrading)
 - [FAQ and NOTICE Board](#faq-and-notice-board)
 
-# NOTICE: I have returned from Emacs but am using Neovim Stable (0.4.3) . Will likely return when 0.5.0 is released as stable
-Check out [my pure VimL implementation of this](https://github.com/faerryn/config/tree/ac15677a46c8d9653f12ea12017273c25ef12649/neovim/.config/nvim) for an easy-to-use config in the same spirit as FEY, but works on stable!
+# NOTICE: I am using packer.nvim on Neovim 0.5.0
+Check out [my packer.nvim based config](https://github.com/faerryn/config/tree/master/neovim/.config/nvim). It accomplishes FEY's goals and much, much more.
 
 # FEY
 Fey is a configuration framework with bad defaults (so that you override them!) of Neovim inspired by [Doom Emacs](https://github.com/hlissner/doom-emacs). It uses [minpac](https://github.com/k-takata/minpac) as a package manager. Fey has two goals:
